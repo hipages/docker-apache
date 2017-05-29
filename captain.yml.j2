@@ -1,0 +1,9 @@
+apache:
+  build: Dockerfile
+  image: {{ AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/hipages/apache
+  pre:
+    - echo "Preparing"
+  post:
+    - echo "Finished"
+  test:
+    - DOCKER_IMAGE={{ AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/hipages/apache:latest bundle exec rspec
