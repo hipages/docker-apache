@@ -1,9 +1,15 @@
-apache:
+ecr:
   build: Dockerfile
   image: {{ AWS_ACCOUNT_ID }}.dkr.ecr.{{ AWS_DEFAULT_REGION }}.amazonaws.com/hipages/apache
   pre:
-    - echo "Preparing"
-  post:
-    - echo "Finished"
+    - eval "$(aws ecr get-login --no-include-email --region "{{ AWS_DEFAULT_REGION }}")"
   test:
     - DOCKER_IMAGE={{ AWS_ACCOUNT_ID }}.dkr.ecr.{{ AWS_DEFAULT_REGION }}.amazonaws.com/hipages/apache:latest bundle exec rspec
+
+docker-hub:
+  build: Dockerfile
+  image: hipages/apache
+  pre:
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+  test:
+    - DOCKER_IMAGE=hipages/apache:latest bundle exec rspec
