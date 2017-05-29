@@ -1,6 +1,9 @@
 sudo: false
 
-language: bash
+bash: ["4.4"]
+node_js: ["5.5"]
+python: ["3.4"]
+go: ["1.8"]
 
 env:
   global:
@@ -25,19 +28,20 @@ addons:
       - debian-sid
     packages:
       - shellcheck
+      - python-dev
 
 before_install:
-  - curl https://raw.githubusercontent.com/hipages/travis-tools/master/docker/before_install.sh | sudo bash
+  - source <(curl -sSL https://raw.githubusercontent.com/hipages/travis-tools/master/docker/before_install.sh)
   - mkdir -p ${HOME}/.ssh && openssl aes-256-cbc -K $encrypted_51f71ad0bde3_key -iv $encrypted_51f71ad0bde3_iv -in build/id_rsa_deploykey.enc -out ${HOME}/.ssh/id_rsa -d && chmod 400 ${HOME}/.ssh/id_rsa
 
 install:
-  - curl https://raw.githubusercontent.com/hipages/travis-tools/master/docker/install.sh | sudo bash
+  - source <(curl -sSL https://raw.githubusercontent.com/hipages/travis-tools/master/docker/install.sh)
 
 script:
-  - curl https://raw.githubusercontent.com/hipages/travis-tools/master/docker/script.sh | sudo bash
+  - source <(curl -sSL https://raw.githubusercontent.com/hipages/travis-tools/master/docker/script.sh)
 
 after_success:
-  - curl https://raw.githubusercontent.com/hipages/travis-tools/master/docker/success.sh | sudo bash
+  - source <(curl -sSL https://raw.githubusercontent.com/hipages/travis-tools/master/docker/after_success.sh)
 
 branches:
   except:
