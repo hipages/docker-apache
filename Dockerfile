@@ -21,8 +21,7 @@ RUN mkdir -p /var/lock/apache2 \
 
 #move our configuration into place
 COPY build/apache2-foreground /usr/local/bin/
-COPY build/www.conf /etc/apache2/sites-available/
-COPY build/admin.conf /etc/apache2/sites-available/
+COPY build/vhost.conf /etc/apache2/sites-available/
 COPY build/apache2.conf /etc/apache2/conf-available/
 
 #enable/disable all the things
@@ -37,7 +36,8 @@ RUN a2enmod rewrite \
     && a2enmod proxy_fcgi \
     && a2enmod proxy_balancer \
     && a2enmod proxy_connect \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && a2ensite vhost
 
 EXPOSE 80
 CMD ["/usr/local/bin/apache2-foreground"]
