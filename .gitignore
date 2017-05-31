@@ -1,2 +1,5 @@
-.idea
+.idea/
 captain.yml
+*.lock
+build/node_modules/
+kube-*.yml
