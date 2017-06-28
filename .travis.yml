@@ -42,4 +42,5 @@ after_success:
 branches:
   except:
     - /^REL\d+/
+    - /^BRANCH-.*$/
 
