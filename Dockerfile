@@ -41,7 +41,7 @@ RUN a2enmod rewrite \
 
 # install CustomLog to rabbitmq
 ENV STDIN2RABBITMQ_VERSION=REL20180122110311
-RUN wget https://github.com/hipages/stdin2rabbitmq/releases/download/${STDIN2RABBITMQ_VERSION}/stdin2rabbitmq -O /usr/bin/stdin2rabbitmq \
+RUN wget -q https://github.com/hipages/stdin2rabbitmq/releases/download/${STDIN2RABBITMQ_VERSION}/stdin2rabbitmq -O /usr/bin/stdin2rabbitmq \
   && chmod 755 /usr/bin/stdin2rabbitmq
 
 EXPOSE 80
