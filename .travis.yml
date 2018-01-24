@@ -20,8 +20,6 @@ cache:
 
 addons:
   apt:
-    sources:
-      - debian-sid
     packages:
       - shellcheck
       - python-dev
