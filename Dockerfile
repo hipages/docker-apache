@@ -6,7 +6,7 @@ RUN sed -i 's/jessie main/jessie main non-free/' /etc/apt/sources.list
 
 #apache setup
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install apache2 libxml2-dev wget\
+    && apt-get -y --no-install-recommends install apache2 libxml2-dev wget ca-certificates \
     && apt-get -y clean autoremove \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

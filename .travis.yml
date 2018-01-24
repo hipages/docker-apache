@@ -21,7 +21,6 @@ cache:
 addons:
   apt:
     packages:
-      - ca-certificates
       - python-dev
       - shellcheck
 
