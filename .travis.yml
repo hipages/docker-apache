@@ -21,8 +21,9 @@ cache:
 addons:
   apt:
     packages:
-      - shellcheck
+      - ca-certificates
       - python-dev
+      - shellcheck
 
 before_install:
   - source <(curl -sSL https://raw.githubusercontent.com/hipages/travis-tools/master/docker/before_install.sh)
