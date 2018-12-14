@@ -39,10 +39,5 @@ RUN a2enmod rewrite \
     && a2enmod rewrite \
     && a2ensite vhost
 
-# install CustomLog to rabbitmq
-ENV STDIN2RABBITMQ_VERSION=REL20180122110311
-RUN wget -q https://github.com/hipages/stdin2rabbitmq/releases/download/${STDIN2RABBITMQ_VERSION}/stdin2rabbitmq -O /usr/bin/stdin2rabbitmq \
-  && chmod 755 /usr/bin/stdin2rabbitmq
-
 EXPOSE 80
 CMD ["/usr/local/bin/apache2-foreground"]
