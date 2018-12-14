@@ -2,6 +2,9 @@ FROM debian:jessie
 
 LABEL maintainer "hipages DevOps Team <syd-team-devops@hipagesgroup.com.au>"
 
+# https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidiotimeout
+ENV FcgidIOTimeout=40
+
 RUN sed -i 's/jessie main/jessie main non-free/' /etc/apt/sources.list
 
 #apache setup
